@@ -22,6 +22,7 @@ mix escript.build
 
 ```bash
 mkdir -s ~/neo4j/data
+mkdir -s ~/neo4j/import
 docker-compose up -d
 ```
 
@@ -36,7 +37,7 @@ lncli describegraph > lightning-graph.json
 Get the `lightning-graph.json` file on the computer running LNQ, and then run these commands in that same exact sequence
 
 ```bash
-lnq convert
+lnq convert lightning-graph.json
 lnq import
 lnq analyze
 ```
