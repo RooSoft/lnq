@@ -8,6 +8,7 @@ Prerequisites
 
 * [Elixir](https://elixir-lang.org/install.html)
 * [Docker](https://docs.docker.com/engine/install/)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 * [jq](https://stedolan.github.io/jq/)
 
 Then, clone this repository and execute these commands
