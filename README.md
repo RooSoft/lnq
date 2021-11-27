@@ -2,7 +2,7 @@
 
 Query the network graph for nodes based on proximity
 
-## Install LNQ
+## Install
 
 Prerequisites
 
