@@ -17,6 +17,13 @@ mix deps.get
 mix escript.build
 ```
 
+## Create a neo4j container
+
+```bash
+mkdir -s ~/neo4j/data
+docker-compose up -d
+```
+
 ## Import network graph from LND
 
 On a Lightning Node running LND, execute
