@@ -20,7 +20,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-ln_import-*.tar
+lnq-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
@@ -29,4 +29,4 @@ ln_import-*.tar
 /data
 
 # the escript executable
-/ln_import
+/lnq
