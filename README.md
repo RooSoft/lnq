@@ -38,5 +38,5 @@ lnq analyze
 Get a help screen listing possible queries by running
 
 ```bash
-lnq
+./lnq
 ```
