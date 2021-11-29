@@ -26,7 +26,6 @@ defmodule LnImport.Commands.CheapestRoutes do
   def execute node1_pub_key, node2_pub_key do
     Neo4j.get_connection()
     |> Neo4j.Query.get_cheapest_routes(node1_pub_key, node2_pub_key)
-    |> IO.inspect
     |> Formatting.Query.cheapest_routes
   end
 end
