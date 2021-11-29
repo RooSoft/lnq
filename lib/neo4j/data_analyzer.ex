@@ -10,7 +10,7 @@ defmodule LnImport.Neo4j.DataAnalyzer do
       CALL gds.graph.drop('#{@graph_name}')
     """
 
-    %Bolt.Sips.Response{} = Bolt.Sips.query!(conn, query)
+    { _, _ } = Bolt.Sips.query(conn, query)
 
     conn
   end
@@ -20,8 +20,8 @@ defmodule LnImport.Neo4j.DataAnalyzer do
 
     query = """
     CALL gds.graph.create('#{@graph_name}', 'node',
-      { CHANNEL: {} },
-      { relationshipProperties: ['capacity'] }
+      { CHANNEL: { } },
+      { relationshipProperties: ['capacity', 'fee_rate'] }
     )
     """
 
