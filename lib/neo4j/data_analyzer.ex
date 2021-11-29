@@ -20,7 +20,7 @@ defmodule LnImport.Neo4j.DataAnalyzer do
 
     query = """
     CALL gds.graph.create('#{@graph_name}', 'node',
-      { CHANNEL: {orientation: 'UNDIRECTED'} },
+      { CHANNEL: {} },
       { relationshipProperties: ['capacity'] }
     )
     """
