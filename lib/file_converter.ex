@@ -24,8 +24,10 @@ defmodule LnImport.FileConverter do
   defp extract_channels json_filename, output_filename do
     Logger.info("Creating #{output_filename}")
 
-    select = "[\"channel_id\", \"node1_pub\", \"node2_pub\", \"capacity\"]"
-    filter = "(.edges[] | select(.last_update > 0) | [.channel_id, .node1_pub, .node2_pub, (.capacity|tonumber)])"
+    select = "[\"channel_id\", \"node1_pub\", \"node2_pub\", \"capacity\", \"fee_rate\"]"
+    filter1 = "(.edges[] | select(.last_update > 0) | [.channel_id, .node1_pub, .node2_pub, (.capacity|tonumber), (.node1_policy.fee_rate_milli_msat // '0'|tonumber)])"
+    filter2 = "(.edges[] | select(.last_update > 0) | [.channel_id, .node2_pub, .node1_pub, (.capacity|tonumber), (.node2_policy.fee_rate_milli_msat // '0'|tonumber)])"
+    filter = "#{filter1}, #{filter2}"
     jq_query = "#{select}, #{filter} | @csv"
 
     {_output, _code} = execute_command jq_query, json_filename, output_filename

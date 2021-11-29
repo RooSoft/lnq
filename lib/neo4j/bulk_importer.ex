@@ -45,7 +45,7 @@ defmodule LnImport.Neo4j.BulkImporter do
       LOAD CSV WITH HEADERS FROM 'file:///#{channels_csv_filename}' AS edge FIELDTERMINATOR ','
       MATCH (n1:node {pub_key: edge.node1_pub})
       MATCH (n2:node {pub_key: edge.node2_pub})
-      MERGE (n1)-[:CHANNEL {lnd_id: edge.channel_id, capacity: toInteger(edge.capacity)}]-(n2)
+      MERGE (n1)-[:CHANNEL {lnd_id: edge.channel_id, capacity: toInteger(edge.capacity), fee: toInteger(edge.fee_rate)}]-(n2)
       RETURN count(n1);
     """
 
