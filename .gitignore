@@ -1,3 +1,5 @@
+**/*.swp
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
@@ -30,3 +32,5 @@ lnq-*.tar
 
 # the escript executable
 /lnq
+
+/scripts/channels.csv

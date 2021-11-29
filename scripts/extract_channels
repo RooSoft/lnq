@@ -1,0 +1,19 @@
+#! /bin/bash
+
+query=
+echo $query
+
+cat ~/neo4j/lightning-graph.json | jq -r '
+  ["channel_id", "node1_pub", "node2_pub", "capacity", "fee_rate"], 
+  ( 
+    .edges[] |
+    select(.last_update > 0) | 
+    [.channel_id, .node1_pub, .node2_pub, (.capacity|tonumber), (.node1_policy.fee_rate_milli_msat // "0"|tonumber)] 
+  ),
+  ( 
+    .edges[] |
+    select(.last_update > 0) | 
+    [.channel_id, .node2_pub, .node1_pub, (.capacity|tonumber), (.node2_policy.fee_rate_milli_msat // "0"|tonumber)] 
+  )
+  | @csv' > channels.csv
+
