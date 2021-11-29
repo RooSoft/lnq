@@ -70,4 +70,36 @@ defmodule LnImport.Neo4j.Query do
       result["x"].properties
     end)
   end
+
+  def get_cheapest_routes conn, node1_pub_key, node2_pub_key do
+    query = """
+    MATCH   (source:node {pub_key: '#{node1_pub_key}'}),
+            (target:node {pub_key: '#{node2_pub_key}'})
+    CALL gds.shortestPath.yens.stream('myGraph', {
+        sourceNode: source,
+        targetNode: target,
+        k: 11,
+        relationshipWeightProperty: 'fee_rate'
+    })
+    YIELD index, totalCost, nodeIds, costs, path
+    RETURN
+        index,
+        totalCost,
+        [nodeId IN nodeIds | gds.util.asNode(nodeId).pub_key] AS pubKeys,
+        costs
+    ORDER BY index
+    SKIP 1
+"""
+    %Bolt.Sips.Response{results: results} = Bolt.Sips.query!(conn, query)
+
+    results
+    |> Enum.map(fn result ->
+      %{
+        index: result["index"],
+        total_cost: result["totalCost"],
+        costs: result["costs"],
+        pub_keys: result["pubKeys"]
+      }
+    end)
+  end
 end

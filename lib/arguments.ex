@@ -46,6 +46,16 @@ defmodule LnImport.Arguments do
   end
 
   defp execute {
+    [:cheapest_routes],
+    %Optimus.ParseResult{args: %{
+      node1_pub_key: node1_pub_key,
+      node2_pub_key: node2_pub_key
+    } }
+  } do
+    Commands.CheapestRoutes.execute(node1_pub_key, node2_pub_key)
+  end
+
+  defp execute {
     [:import],
     %Optimus.ParseResult{ options: options }
   } do
@@ -82,6 +92,7 @@ defmodule LnImport.Arguments do
         common_peers: Commands.CommonPeers.get_definition(),
         community_members: Commands.CommunityMembers.get_definition(),
         farthest_nodes: Commands.FarthestNodes.get_definition(),
+        cheapest_routes: Commands.CheapestRoutes.get_definition()
       ]
     ) do
      { :ok, definition } -> definition
