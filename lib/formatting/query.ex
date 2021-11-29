@@ -61,7 +61,12 @@ defmodule LnImport.Formatting.Query do
   defp format_cheapest_routes routes do
     routes
     |> Enum.map(fn node ->
-      [node.index, node.total_cost, node.costs, node.pub_keys]
+      [
+        node.index,
+        node.total_cost,
+        node.costs |> Enum.join(", "),
+        node.pub_keys |> Enum.join(", ")
+      ]
     end)
   end
 end
