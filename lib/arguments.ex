@@ -1,12 +1,14 @@
 defmodule LnImport.Arguments do
   alias LnImport.Commands
 
+  @dialyzer {:nowarn_function, parse: 1}
   def parse argv do
     get_definition()
     |> parse(argv)
     |> execute()
   end
 
+  @dialyzer {:nowarn_function, execute: 1}
   defp execute {
     [:common_peers], %Optimus.ParseResult{
       args: %{
@@ -77,6 +79,7 @@ defmodule LnImport.Arguments do
     end)
   end
 
+  @dialyzer {:nowarn_function, get_definition: 0}
   defp get_definition do
     case Optimus.new(
       name: "lnq",
@@ -100,6 +103,7 @@ defmodule LnImport.Arguments do
     end
   end
 
+  @dialyzer {:nowarn_function, parse: 2}
   defp parse definition, argv do
     Optimus.parse!(definition, argv)
   end
