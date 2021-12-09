@@ -1,5 +1,5 @@
-defmodule LnImport.Arguments do
-  alias LnImport.Commands
+defmodule Lnq.Arguments do
+  alias Lnq.Commands
 
   @dialyzer {:nowarn_function, parse: 1}
   def parse argv do

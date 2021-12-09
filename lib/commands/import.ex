@@ -1,4 +1,4 @@
-defmodule LnImport.Commands.Import do
+defmodule Lnq.Commands.Import do
   @nodes_csv_filename "nodes.csv"
   @channels_csv_filename "channels.csv"
 

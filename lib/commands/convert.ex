@@ -1,4 +1,4 @@
-defmodule LnImport.Commands.Convert do
+defmodule Lnq.Commands.Convert do
   @neo4j_import_folder "~/neo4j/import/"
 
   @nodes_csv_filename "nodes.csv"

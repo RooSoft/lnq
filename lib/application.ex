@@ -1,7 +1,7 @@
-defmodule LnImport.Application do
+defmodule Lnq.Application do
   require Logger
 
-  alias LnImport.Arguments
+  alias Lnq.Arguments
 
   @dialyzer {:nowarn_function, main: 1}
   def main(args) do

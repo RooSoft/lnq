@@ -1,6 +1,6 @@
-defmodule LnImport.Commands.CommonPeers do
+defmodule Lnq.Commands.CommonPeers do
   alias LnImport.Neo4j
-  alias LnImport.Formatting
+  alias Lnq.Formatting
 
   def get_definition do
     [

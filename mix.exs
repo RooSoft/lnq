@@ -8,7 +8,7 @@ defmodule LnImport.MixProject do
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
 
-      escript: [main_module: LnImport.Application],
+      escript: [main_module: Lnq.Application],
 
       deps: deps()
     ]

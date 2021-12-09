@@ -1,4 +1,4 @@
-defmodule LnImport.Formatting.Query do
+defmodule Lnq.Formatting.Query do
   alias TableRex.Table
 
   @peer_headers ["alias", "channel count", "total capacity", "community", "betweenness"]

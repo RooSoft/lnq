@@ -1,7 +1,11 @@
-defmodule LnImport.Commands.CheapestRoutes do
+defmodule Lnq.Commands.CheapestRoutes do
   alias LnImport.Neo4j
-  alias LnImport.Formatting
+  alias Lnq.Formatting
 
+  @spec get_definition :: [
+          {:about, <<_::488>>} | {:args, [{any, any}, ...]} | {:name, <<_::152>>},
+          ...
+        ]
   def get_definition do
     [
       name: "get-cheapest-routes",

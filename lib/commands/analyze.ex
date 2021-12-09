@@ -1,4 +1,4 @@
-defmodule LnImport.Commands.Analyze do
+defmodule Lnq.Commands.Analyze do
   alias LnImport.Neo4j
 
   def get_definition do

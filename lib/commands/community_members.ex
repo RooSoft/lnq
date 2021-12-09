@@ -1,6 +1,6 @@
-defmodule LnImport.Commands.CommunityMembers do
+defmodule Lnq.Commands.CommunityMembers do
   alias LnImport.Neo4j
-  alias LnImport.Formatting
+  alias Lnq.Formatting
 
   def get_definition do
     [
