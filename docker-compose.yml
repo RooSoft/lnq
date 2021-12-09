@@ -1,8 +1,8 @@
-version: "3.8"
+version: "3"
 
 services:
   db:
-    image: neo4j:4.1.9-community
+    image: neo4j:4.4-community
     container_name: neo4j
     environment:
       - NEO4J_AUTH=neo4j/test
@@ -10,9 +10,12 @@ services:
       - NEO4JLABS_PLUGINS=["graph-data-science", "apoc"]
       - NEO4J_dbms_security_procedures_whitelist=gds.*, apoc.*
       - NEO4J_dbms_security_procedures_unrestricted=gds.*, apoc.*
+      - NEO4J_dbms_connector_http_listen_address=0.0.0.0:7474
+      - NEO4J_dbms_allow__upgrade=true
     ports:
     - "7474:7474"
     - "7687:7687"
     restart: always
     volumes:
     - $HOME/neo4j/data:/data
+    - $HOME/neo4j/import:/var/lib/neo4j/import
