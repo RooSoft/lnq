@@ -60,7 +60,7 @@ defmodule LnImport.Neo4j.Query do
   def get_common_peers conn, node1_alias, node2_alias do
     query = """
     MATCH (r:node {alias: '#{node1_alias}'})-[]-(x:node)-[]-(node {alias:'#{node2_alias}'})
-    RETURN x
+    RETURN DISTINCT x
     """
 
     %Bolt.Sips.Response{results: results} = Bolt.Sips.query!(conn, query)
