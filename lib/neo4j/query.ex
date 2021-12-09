@@ -2,8 +2,6 @@ defmodule LnImport.Neo4j.Query do
   require Logger
 
   def get_community_members conn, community_id do
-    Logger.info("Getting #{community_id} community members")
-
     query = """
     MATCH (n:node {community: #{community_id}})
     RETURN n
