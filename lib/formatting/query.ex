@@ -10,6 +10,8 @@ defmodule LnImport.Formatting.Query do
   end
 
   def common_peers peers do
+    IO.puts "Found #{Enum.count(peers)} nodes"
+
     peers
     |> format_common_peers
     |> Table.new(@peer_headers)
