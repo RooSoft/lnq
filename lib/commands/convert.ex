@@ -7,7 +7,7 @@ defmodule Lnq.Commands.Convert do
   @nodes_csv_file_path "#{@neo4j_import_folder}#{@nodes_csv_filename}"
   @channels_csv_file_path "#{@neo4j_import_folder}#{@channels_csv_filename}"
 
-  alias LightningGraph.FileConverter
+  alias LightningGraph.Lnd.FileConverter
 
   def get_definition do
     [
