@@ -1,5 +1,5 @@
 defmodule Lnq.Commands.Analyze do
-  alias LnImport.Neo4j
+  alias LightningGraph.Neo4j
 
   def get_definition do
     [

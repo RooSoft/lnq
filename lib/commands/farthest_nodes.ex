@@ -1,5 +1,5 @@
 defmodule Lnq.Commands.FarthestNodes do
-  alias LnImport.Neo4j
+  alias LightningGraph.Neo4j
   alias Lnq.Formatting
 
   def get_definition do

@@ -81,10 +81,12 @@ defmodule Lnq.Arguments do
 
   @dialyzer {:nowarn_function, get_definition: 0}
   defp get_definition do
+    {:ok, vsn} = :application.get_key(:lnq, :vsn)
+
     case Optimus.new(
       name: "lnq",
       description: "Lightning Node Graph Query Tool",
-      version: "0.0.1",
+      version: List.to_string(vsn),
       allow_unknown_args: false,
       parse_double_dash: true,
       subcommands: [

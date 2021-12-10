@@ -1,5 +1,5 @@
 defmodule Lnq.Commands.CommonPeers do
-  alias LnImport.Neo4j
+  alias LightningGraph.Neo4j
   alias Lnq.Formatting
 
   def get_definition do

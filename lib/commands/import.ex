@@ -2,7 +2,7 @@ defmodule Lnq.Commands.Import do
   @nodes_csv_filename "nodes.csv"
   @channels_csv_filename "channels.csv"
 
-  alias LnImport.Neo4j
+  alias LightningGraph.Neo4j
 
   def get_definition do
     [
