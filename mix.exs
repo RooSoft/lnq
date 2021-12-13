@@ -4,7 +4,7 @@ defmodule Lnq.MixProject do
   def project do
     [
       app: :lnq,
-      version: "0.2.0",
+      version: "0.2.1",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
 
@@ -24,7 +24,7 @@ defmodule Lnq.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:lightning_graph, git: "https://github.com/RooSoft/lightning_graph.git", tag: "0.1.1"},
+      {:lightning_graph, git: "https://github.com/RooSoft/lightning_graph.git", tag: "0.1.2"},
       {:table_rex, "~> 3.1.1"},
       {:optimus, "~> 0.2"},
       {:tzdata, "~> 0.1.7", override: true}
