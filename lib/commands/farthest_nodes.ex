@@ -2,6 +2,8 @@ defmodule Lnq.Commands.FarthestNodes do
   alias LightningGraph.Neo4j
   alias Lnq.Formatting
 
+  @graph_name "myGraph"
+
   def get_definition do
     [
       name: "get-farthest-nodes",
@@ -19,7 +21,7 @@ defmodule Lnq.Commands.FarthestNodes do
 
   def execute node_pub_key do
     Neo4j.get_connection()
-    |> Neo4j.Query.get_longest_paths(node_pub_key)
+    |> Neo4j.Query.get_longest_paths(@graph_name, node_pub_key)
     |> Formatting.Query.farthest_nodes
   end
 end

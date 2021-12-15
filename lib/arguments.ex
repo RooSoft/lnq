@@ -50,11 +50,12 @@ defmodule Lnq.Arguments do
   defp execute {
     [:cheapest_routes],
     %Optimus.ParseResult{args: %{
+      route_count: route_count,
       node1_pub_key: node1_pub_key,
       node2_pub_key: node2_pub_key
     } }
   } do
-    Commands.CheapestRoutes.execute(node1_pub_key, node2_pub_key)
+    Commands.CheapestRoutes.execute(route_count, node1_pub_key, node2_pub_key)
   end
 
   defp execute {
