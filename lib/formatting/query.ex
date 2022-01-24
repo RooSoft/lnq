@@ -52,14 +52,17 @@ defmodule Lnq.Formatting.Query do
   end
 
   defp display_node(node) do
+    betweenness = Number.SI.number_to_si(node["betweenness"], unit: "", precision: 1)
+    capacity = Number.SI.number_to_si(node["total_capacity"], unit: "", precision: 1)
+
     IO.puts("alias: #{node["alias"]}")
     IO.puts("pub_key: #{node["pub_key"]}")
     IO.puts("color: #{node["color"]}")
     IO.puts("channel_count: #{node["channel_count"]}")
     IO.puts("community: #{node["community"]}")
-    IO.puts("betweenness: #{node["betweenness"]}")
+    IO.puts("betweenness: #{betweenness}")
     IO.puts("is_local: #{node["is_local"]}")
-    IO.puts("capacity: #{node["total_capacity"]}")
+    IO.puts("capacity: #{capacity}")
   end
 
   defp format_common_peers(peers) do

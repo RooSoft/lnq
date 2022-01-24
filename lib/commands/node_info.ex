@@ -4,7 +4,7 @@ defmodule Lnq.Commands.NodeInfo do
 
   def get_definition do
     [
-      name: "node-info",
+      name: "get-node-info",
       about: "Display basic node info",
       args: [
         node_alias: [
