@@ -4,7 +4,7 @@ defmodule Lnq.MixProject do
   def project do
     [
       app: :lnq,
-      version: "0.2.1",
+      version: "0.2.2",
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       escript: [main_module: Lnq.Application],
@@ -26,7 +26,7 @@ defmodule Lnq.MixProject do
       {:table_rex, "~> 3.1.1"},
       {:optimus, "~> 0.2"},
       {:tzdata, "~> 0.1.7", override: true},
-      {:number, "~>  1.0.3"},
+      {:number, "~>  1.0.3"}
     ]
   end
 end
