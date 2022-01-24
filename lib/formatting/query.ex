@@ -5,62 +5,90 @@ defmodule Lnq.Formatting.Query do
   @farthest_node_headers ["cost", "alias", "pub key", "community", "betweenness"]
   @cheapest_routes_headers ["index", "total cost", "costs", "pub keys"]
 
-  def common_peers [] do
-    IO.puts "No data"
+  def get_node_by_alias(node) do
+    node
+    |> display_node
   end
 
-  def common_peers peers do
-    IO.puts "Found #{Enum.count(peers)} nodes"
+  def common_peers([]) do
+    IO.puts("No data")
+  end
+
+  def common_peers(peers) do
+    IO.puts("Found #{Enum.count(peers)} nodes")
 
     peers
     |> format_common_peers
     |> Table.new(@peer_headers)
     |> Table.put_column_meta(1..4, align: :right)
-    |> Table.render!
-    |> IO.puts
+    |> Table.render!()
+    |> IO.puts()
   end
 
-  def farthest_nodes [] do
-    IO.puts "No data"
+  def farthest_nodes([]) do
+    IO.puts("No data")
   end
 
-  def farthest_nodes nodes do
-    IO.puts "Found #{Enum.count(nodes)} nodes"
+  def farthest_nodes(nodes) do
+    IO.puts("Found #{Enum.count(nodes)} nodes")
 
     nodes
     |> format_farthest_nodes
     |> Table.new(@farthest_node_headers)
     |> Table.put_column_meta(0, align: :right)
     |> Table.put_column_meta(3..4, align: :right)
-    |> Table.render!
-    |> IO.puts
+    |> Table.render!()
+    |> IO.puts()
   end
 
-  def cheapest_routes routes do
-    IO.puts "Found #{Enum.count(routes)} routes"
+  def cheapest_routes(routes) do
+    IO.puts("Found #{Enum.count(routes)} routes")
 
     routes
     |> format_cheapest_routes()
     |> Table.new(@cheapest_routes_headers)
-    |> Table.render!
-    |> IO.puts
+    |> Table.render!()
+    |> IO.puts()
   end
 
-  defp format_common_peers peers do
+  defp display_node(node) do
+    IO.puts("alias: #{node["alias"]}")
+    IO.puts("pub_key: #{node["pub_key"]}")
+    IO.puts("color: #{node["color"]}")
+    IO.puts("channel_count: #{node["channel_count"]}")
+    IO.puts("community: #{node["community"]}")
+    IO.puts("betweenness: #{node["betweenness"]}")
+    IO.puts("is_local: #{node["is_local"]}")
+    IO.puts("capacity: #{node["total_capacity"]}")
+  end
+
+  defp format_common_peers(peers) do
     peers
     |> Enum.map(fn peer ->
-      [peer["alias"], peer["channel_count"], peer["total_capacity"], peer["community"], peer["betweenness"]]
+      [
+        peer["alias"],
+        peer["channel_count"],
+        peer["total_capacity"],
+        peer["community"],
+        peer["betweenness"]
+      ]
     end)
   end
 
-  defp format_farthest_nodes nodes do
+  defp format_farthest_nodes(nodes) do
     nodes
     |> Enum.map(fn node ->
-      [node["totalCost"], node["targetNodeName"], node["targetNodePubKey"], node["targetNodeCommunity"], node["targetNodeBetweenness"]]
+      [
+        node["totalCost"],
+        node["targetNodeName"],
+        node["targetNodePubKey"],
+        node["targetNodeCommunity"],
+        node["targetNodeBetweenness"]
+      ]
     end)
   end
 
-  defp format_cheapest_routes routes do
+  defp format_cheapest_routes(routes) do
     routes
     |> Enum.map(fn node ->
       [
