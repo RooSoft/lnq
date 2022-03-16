@@ -22,7 +22,7 @@ defmodule Lnq.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:lightning_graph, git: "https://github.com/RooSoft/lightning_graph.git", tag: "0.1.10"},
+      {:lightning_graph, git: "https://github.com/RooSoft/lightning_graph.git", tag: "0.2.6"},
       {:table_rex, "~> 3.1.1"},
       {:optimus, "~> 0.2"},
       {:tzdata, "~> 0.1.7", override: true},
