@@ -2,6 +2,7 @@ defmodule Lnq.Formatting.Query do
   alias TableRex.Table
 
   @peer_headers ["alias", "channel count", "total capacity", "community", "betweenness"]
+  @peer_rates_headers ["alias", "peer pub key", "start channel id", "base fee", "fee rate"]
   @farthest_node_headers ["cost", "alias", "pub key", "community", "betweenness"]
   @cheapest_routes_headers ["index", "total cost", "costs", "pub keys"]
 
@@ -21,6 +22,17 @@ defmodule Lnq.Formatting.Query do
     |> format_common_peers
     |> Table.new(@peer_headers)
     |> Table.put_column_meta(1..4, align: :right)
+    |> Table.render!()
+    |> IO.puts()
+  end
+
+  def common_peers_rates(peers) do
+    IO.puts("Found #{Enum.count(peers)} channels")
+
+    peers
+    |> format_common_peers_rates
+    |> Table.new(@peer_rates_headers)
+    |> Table.put_column_meta(3..4, align: :right)
     |> Table.render!()
     |> IO.puts()
   end
@@ -74,6 +86,19 @@ defmodule Lnq.Formatting.Query do
         peer["total_capacity"],
         peer["community"],
         peer["betweenness"]
+      ]
+    end)
+  end
+
+  defp format_common_peers_rates(peers) do
+    peers
+    |> Enum.map(fn peer ->
+      [
+        peer[:peer_alias],
+        peer[:peer_pub_key],
+        peer[:start_channel_id],
+        peer[:base_fee],
+        peer[:fee_rate]
       ]
     end)
   end

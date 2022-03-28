@@ -33,6 +33,19 @@ defmodule Lnq.Arguments do
     Commands.CommonPeers.execute(node1_alias, node2_alias)
   end
 
+  @dialyzer {:nowarn_function, execute: 1}
+  defp execute({
+         [:common_peers_rates],
+         %Optimus.ParseResult{
+           args: %{
+             node1_alias: node1_alias,
+             node2_alias: node2_alias
+           }
+         }
+       }) do
+    Commands.CommonPeersRates.execute(node1_alias, node2_alias)
+  end
+
   defp execute({
          [:community_members],
          %Optimus.ParseResult{args: %{community_id: community_id}}
@@ -112,6 +125,7 @@ defmodule Lnq.Arguments do
              analyze: Commands.Analyze.get_definition(),
              node_info: Commands.NodeInfo.get_definition(),
              common_peers: Commands.CommonPeers.get_definition(),
+             common_peers_rates: Commands.CommonPeersRates.get_definition(),
              community_members: Commands.CommunityMembers.get_definition(),
              farthest_nodes: Commands.FarthestNodes.get_definition(),
              cheapest_routes: Commands.CheapestRoutes.get_definition()
